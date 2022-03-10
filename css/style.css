@@ -1,0 +1,128 @@
+:root {
+    --clr-neon: hsl(317 100% 54%);
+    --clr-bg: hsl(323 21% 16%);
+}
+
+.navbar-brand {
+    font-size: 2rem;
+    color: var(--clr-neon) !important;
+    text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.125em currentColor;
+}
+
+body {
+    color: white;
+    font-family: "Audiowide", sans-serif;
+    background-color: black;
+}
+
+.hero {
+    /* background: url(/img/ben-neale-zpxKdH_xNSI-unsplash.jpg); */
+    background: url(https://images.unsplash.com/photo-1498736297812-3a08021f206f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1957&q=80);
+    background-position: center;
+    background-size: cover;
+    height: 90vh;
+}
+
+p {
+    font-size: 1.2em;
+}
+
+h1 {
+    font-size: 5rem;
+    text-shadow: 5px 5px #000000;
+}
+
+h2 {
+    /* text-decoration: underline; */
+}
+
+hr {
+    height: 5px !important;
+    color: var(--clr-neon) !important;
+}
+
+#customerReviews {
+    font-size: 1.5em;
+}
+
+#pinballInfo img {
+    width: 100%;
+}
+
+#inventory img {
+    width: 100%;
+}
+
+#videoGameQuotes {
+    font-size: 1.2em;
+    opacity: 1;
+    transition: 1s opacity;
+}
+
+.neon-button {
+    /* basic button styling */
+    /* display: inline-block; */
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--clr-neon);
+    border: var(--clr-neon) 0.125em solid;
+    /* border: currentColor 0.125em solid; */
+    padding: .25em 1em;
+    /* using em so that if the font size changes, the padding adjusts with it, keeps things relative*/
+    border-radius: .25em;
+    /* glowing effect */
+    /* inner shadow used on text for glow */
+    text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.125em currentColor;
+    /* outer shadow glow */
+    /* inset adds the shadow to the inside of that element */
+    box-shadow: 0 0 0.5em 0 var(--clr-neon), inset 0 0 0.5em 0 var(--clr-neon);
+    /* keeps the glow under the button itself */
+    position: relative;
+    /* transition: background-color 100ms linear; */
+}
+
+.neon-button::before {
+    pointer-events: none;
+    content: '';
+    position: absolute;
+    background: var(--clr-neon);
+    top: 100%;
+    left: 0;
+    /* right: 0;
+    bottom: 0; */
+    width: 100%;
+    height: 100%;
+    /* need to use perspective first, then it opens up rotating */
+    /* defining how far away we are */
+    transform: perspective(1em) rotateX(40deg) scale(1, 0.35);
+    filter: blur(1em);
+    opacity: 0.7;
+}
+
+.neon-button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 0 2em 0.5em var(--clr-neon);
+    opacity: 0;
+    background-color: var(--clr-neon);
+    z-index: -1;
+    transition: opacity 100ms linear;
+}
+
+.neon-button:hover, .neon-button:focus {
+    background: var(--clr-neon);
+    color: var(--clr-bg);
+    text-shadow: none;
+}
+
+.neon-button:hover::before, .neon-button:focus::before {
+    opacity: 1;
+}
+
+.neon-button:hover::after, .neon-button:focus::after {
+    opacity: 1;
+}
